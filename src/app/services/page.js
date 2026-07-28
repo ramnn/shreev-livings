@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { FiCheckCircle } from 'react-icons/fi';
 import Button from '../../components/Button';
+import { servicesData } from '../../data/services';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
@@ -17,49 +18,6 @@ const staggerContainer = {
     transition: { staggerChildren: 0.25, delayChildren: 0.1 }
   }
 };
-
-const servicesList = [
-  {
-    id: 'residential',
-    title: 'Residential Design',
-    subtitle: 'Bespoke Living Spaces',
-    description: 'Transform your home into a sanctuary of luxury and comfort. Our residential interior design services cover everything from spatial planning to bespoke furniture sourcing, ensuring every detail aligns with your lifestyle. We craft environments that are both beautiful and highly functional.',
-    image: '/images/portfolio_bedroom_1779040259154.png',
-    features: ['Custom furniture and upholstery', 'Luxury spatial planning', 'High-end material selection', 'Art and decor curation']
-  },
-  {
-    id: 'commercial',
-    title: 'Commercial Spaces',
-    subtitle: 'Inspiring Work Environments',
-    description: 'We design inspiring, brand-aligned environments for offices, boutiques, and hospitality venues. A well-designed commercial space not only enhances productivity but also leaves a lasting impression on clients and visitors. We merge aesthetics with operational efficiency.',
-    image: '/images/portfolio_office_1779040274216.png',
-    features: ['Brand-aligned aesthetic design', 'Ergonomic workspace planning', 'Retail and hospitality optimization', 'Acoustic and lighting solutions']
-  },
-  {
-    id: 'turnkey',
-    title: 'Turnkey Solutions',
-    subtitle: 'End-to-End Execution',
-    description: 'Experience a hassle-free journey from concept to completion. With our turnkey solutions, we manage the entire project—from the initial design phase through construction, installation, and final handover. Relax as we bring your vision to life seamlessly.',
-    image: '/images/service_turnkey.png',
-    features: ['Single point of contact', 'Project management & timeline control', 'Quality assurance at every step', 'Ready-to-move-in delivery']
-  },
-  {
-    id: 'modular',
-    title: 'Modular Kitchens & Wardrobes',
-    subtitle: 'Smart Storage, Elegant Finish',
-    description: 'Maximize your space with our premium modular solutions. We design and install high-end modular kitchens and wardrobes that blend sleek modern aesthetics with smart, functional storage. Engineered for durability and style, our modular units are customized to fit your needs.',
-    image: '/images/service_modular.png',
-    features: ['Premium imported hardware', 'Space-optimizing smart layouts', 'Moisture and heat resistant finishes', 'Custom internal configurations']
-  },
-  {
-    id: '3d-visualization',
-    title: '3D Visualization',
-    subtitle: 'See It Before We Build It',
-    description: 'Eliminate guesswork with our hyper-realistic 3D rendering services. Before any physical work begins, we provide cinematic, lifelike visualizations of your proposed space. This allows you to experience the design, lighting, and textures, ensuring absolute confidence in the final result.',
-    image: '/images/service_3d_viz.png',
-    features: ['Hyper-realistic photorealistic renders', 'Virtual walkthroughs', 'Lighting and texture simulations', 'Iterative design refinement']
-  }
-];
 
 export default function Services() {
   return (
@@ -84,7 +42,7 @@ export default function Services() {
       </section>
 
       {/* DETAILED SERVICES SECTIONS */}
-      {servicesList.map((service, index) => {
+      {servicesData.map((service, index) => {
         const isEven = index % 2 === 1; // 0-indexed, so 1, 3 are even visually alternating
         return (
           <section key={service.id} className={`py-xl md:py-2xl ${isEven ? 'bg-primary text-bg-light' : 'bg-bg-light text-text-dark'}`}>
@@ -102,13 +60,19 @@ export default function Services() {
                   <h3 className="font-serif text-[2rem] md:text-[2.5rem] mb-md text-inherit">{service.title}</h3>
                   <p className="text-[1.1rem] leading-[1.8] opacity-80 mb-lg">{service.description}</p>
                   
-                  <div className="flex flex-col gap-sm mt-md">
+                  <div className="flex flex-col gap-sm mt-md mb-lg">
                     {service.features.map((feature, i) => (
                       <div key={i} className="flex items-center gap-sm text-[1.05rem] opacity-90">
                         <FiCheckCircle size={20} className="text-secondary flex-shrink-0" />
                         <span>{feature}</span>
                       </div>
                     ))}
+                  </div>
+
+                  <div>
+                    <Button variant={isEven ? "secondary" : "primary"} href={`/services/${service.id}`}>
+                      Explore Service
+                    </Button>
                   </div>
                 </div>
 

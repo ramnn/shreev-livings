@@ -13,7 +13,7 @@ const fadeInUp = {
 export default function Contact() {
   return (
     <main className="w-full">
-      <section className="min-h-screen pt-[150px] pb-[100px] bg-bg-light flex items-center md:pt-[120px]">
+      <section className="min-h-screen pt-[100px] md:pt-[150px] pb-xl md:pb-[100px] bg-bg-light flex items-center">
         <div className="container-custom">
           <motion.div 
             className="grid grid-cols-1 lg:grid-cols-2 gap-xl bg-bg-light rounded-[8px] shadow-[0_30px_60px_rgba(0,0,0,0.05)] overflow-hidden"
@@ -28,7 +28,7 @@ export default function Contact() {
             {/* Left Side: Contact Information */}
             <motion.div className="bg-primary text-bg-light p-xl flex flex-col justify-between" variants={fadeInUp}>
               <div>
-                <h1 className="font-serif text-[3rem] mb-md text-secondary">Let's create something beautiful.</h1>
+                <h1 className="font-serif text-[2rem] md:text-[3rem] mb-md text-secondary">Let's create something beautiful.</h1>
                 <p className="text-[1.1rem] leading-[1.6] opacity-90 mb-xl">
                   Whether you're looking to completely remodel your home or simply need expert styling advice, our team is ready to bring your vision to life.
                 </p>
@@ -56,7 +56,7 @@ export default function Contact() {
               <div className="absolute top-0 left-0 w-full h-full">
                 <Image src="/images/hero_interior_1779040229551.png" alt="Luxury Interior" fill className="object-cover w-full h-full" />
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-[#131F38]/90 to-[#131F38]/20 flex flex-col justify-end items-start p-2xl text-bg-light">
-                  <h3 className="font-serif text-[2.5rem] mb-sm text-white">Your Dream Space Awaits</h3>
+                  <h3 className="font-serif text-[2rem] md:text-[2.5rem] mb-sm text-white">Your Dream Space Awaits</h3>
                   <p className="font-sans text-[1.1rem] mb-lg opacity-90">Connect with our principal designers today to begin curating your perfect environment.</p>
                   <Button variant="accent" onClick={() => window.open('https://wa.me/919998439939', '_blank')}>Contact Us</Button>
                 </div>

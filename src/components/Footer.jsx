@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container-custom grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-lg md:gap-xl pb-xl">
         <div className="max-w-[400px]">
           <div style={{ marginBottom: '1rem' }}>
-            <Image src="/images/logo.png" alt="Shreev Livings Logo" width={240} height={120} style={{ objectFit: 'contain' }} />
+            <Image src="/images/logo.png" alt="Shreev Livings Logo" width={240} height={120} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
           </div>
           <p className="text-white/70 leading-relaxed">
             Elevating everyday spaces into extraordinary experiences through modern, tailored interior design.

@@ -23,7 +23,7 @@ export default function Navbar() {
     <header className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 ease-in-out ${isScrolled ? 'bg-[#131F38]/98 backdrop-blur-md py-sm shadow-[0_4px_30px_rgba(0,0,0,0.3)]' : 'py-md bg-primary'}`}>
       <div className="container-custom flex justify-between items-center">
         <Link href="/" className="font-serif text-[1.5rem] font-medium text-text-dark tracking-[0.02em]">
-          <Image src="/images/logo.png" alt="Shreev Livings Logo" width={180} height={90} style={{ objectFit: 'contain' }} priority />
+          <Image src="/images/logo.png" alt="Shreev Livings Logo" width={180} height={90} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} priority />
         </Link>
 
         <nav className="hidden md:flex items-center gap-lg">

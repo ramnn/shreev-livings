@@ -20,7 +20,7 @@ const staggerContainer = {
 export default function Portfolio() {
   return (
     <main className="w-full">
-      <section className="py-2xl bg-bg-light text-text-dark" style={{ paddingTop: '150px' }}>
+      <section className="py-xl md:py-2xl bg-bg-light text-text-dark" style={{ paddingTop: '100px' }}>
         <div className="container-custom">
           <motion.div 
             className="flex flex-col md:flex-row justify-between items-start md:items-end gap-md md:gap-0 mb-xl"
@@ -30,7 +30,7 @@ export default function Portfolio() {
           >
             <div>
               <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">Selected Works</motion.span>
-              <motion.h2 variants={fadeInUp} className="font-serif text-[3rem] mb-sm text-inherit">Recent Projects</motion.h2>
+              <motion.h2 variants={fadeInUp} className="font-serif text-[2rem] md:text-[3rem] mb-sm text-inherit">Recent Projects</motion.h2>
             </div>
           </motion.div>
 
@@ -73,7 +73,7 @@ export default function Portfolio() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-[8rem] bg-secondary text-primary text-center">
+      <section className="py-xl md:py-[8rem] bg-secondary text-primary text-center">
         <div className="container-custom">
           <motion.h2 
             className="font-serif text-[clamp(2.5rem,5vw,4rem)] mb-[2rem] text-primary"

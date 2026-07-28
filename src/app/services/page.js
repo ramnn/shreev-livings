@@ -65,7 +65,7 @@ export default function Services() {
   return (
     <main className="w-full">
       {/* HEADER SECTION */}
-      <section className="bg-primary text-bg-light pt-[150px] pb-[80px]">
+      <section className="bg-primary text-bg-light pt-[100px] md:pt-[150px] pb-xl md:pb-[80px]">
         <div className="container-custom">
           <motion.div 
             className="text-center"
@@ -75,7 +75,7 @@ export default function Services() {
             style={{ marginBottom: 0 }}
           >
             <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">Expertise</motion.span>
-            <motion.h2 variants={fadeInUp} className="font-serif text-[3rem] mb-sm text-inherit">Our Comprehensive Services</motion.h2>
+            <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">Our Comprehensive Services</motion.h2>
             <motion.p variants={fadeInUp} style={{ fontSize: '1.2rem', opacity: 0.8, maxWidth: '700px', margin: '0 auto', lineHeight: 1.6 }}>
               From initial conceptualization to final execution, we offer a full spectrum of luxury interior design services tailored to your unique requirements.
             </motion.p>
@@ -87,7 +87,7 @@ export default function Services() {
       {servicesList.map((service, index) => {
         const isEven = index % 2 === 1; // 0-indexed, so 1, 3 are even visually alternating
         return (
-          <section key={service.id} className={`py-2xl ${isEven ? 'bg-primary text-bg-light' : 'bg-bg-light text-text-dark'}`}>
+          <section key={service.id} className={`py-xl md:py-2xl ${isEven ? 'bg-primary text-bg-light' : 'bg-bg-light text-text-dark'}`}>
             <div className="container-custom">
               <motion.div 
                 className="grid grid-cols-1 lg:grid-cols-2 gap-lg lg:gap-2xl items-center group"
@@ -99,7 +99,7 @@ export default function Services() {
                 {/* Text Content */}
                 <div className={`flex flex-col order-2 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
                   <span className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">{service.subtitle}</span>
-                  <h3 className="font-serif text-[2.5rem] mb-md text-inherit">{service.title}</h3>
+                  <h3 className="font-serif text-[2rem] md:text-[2.5rem] mb-md text-inherit">{service.title}</h3>
                   <p className="text-[1.1rem] leading-[1.8] opacity-80 mb-lg">{service.description}</p>
                   
                   <div className="flex flex-col gap-sm mt-md">
@@ -129,7 +129,7 @@ export default function Services() {
       })}
 
       {/* CTA SECTION */}
-      <section className="py-[8rem] bg-secondary text-primary text-center">
+      <section className="py-xl md:py-[8rem] bg-secondary text-primary text-center">
         <div className="container-custom">
           <motion.h2 
             className="font-serif text-[clamp(2.5rem,5vw,4rem)] mb-[2rem] text-primary"

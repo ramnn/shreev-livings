@@ -28,7 +28,7 @@ export default function About() {
 
   return (
     <main className="w-full">
-      <section className="py-2xl bg-bg-light text-text-dark" style={{ paddingTop: '150px' }} ref={aboutRef}>
+      <section className="py-xl md:py-2xl bg-bg-light text-text-dark" style={{ paddingTop: '100px' }} ref={aboutRef}>
         <div className="container-custom grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
           <motion.div 
             className="md:pr-xl"
@@ -38,7 +38,7 @@ export default function About() {
             variants={staggerContainer}
           >
             <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">Our Philosophy</motion.span>
-            <motion.h2 variants={fadeInUp} className="font-serif text-[3rem] mb-sm text-inherit">Form meets perfect function.</motion.h2>
+            <motion.h2 variants={fadeInUp} className="font-serif text-[2rem] md:text-[3rem] mb-sm text-inherit">Form meets perfect function.</motion.h2>
             <motion.p variants={fadeInUp} className="text-[1.1rem] leading-[1.8] text-inherit opacity-80 mb-lg">
               At Shreev Livings, we believe that your environment profoundly impacts your well-being. Our approach to interior design goes beyond simple aesthetics; we craft functional art that elevates your daily life.
             </motion.p>
@@ -73,7 +73,7 @@ export default function About() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-[8rem] bg-secondary text-primary text-center">
+      <section className="py-xl md:py-[8rem] bg-secondary text-primary text-center">
         <div className="container-custom">
           <motion.h2 
             className="font-serif text-[clamp(2.5rem,5vw,4rem)] mb-[2rem] text-primary"

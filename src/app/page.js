@@ -73,7 +73,7 @@ export default function Home() {
             initial="hidden"
             animate="visible"
           >
-            <motion.h1 variants={fadeInUp} className="font-serif text-[2.5rem] md:text-[clamp(3rem,5vw,5.5rem)] leading-[1.1] mb-md text-inherit">
+            <motion.h1 variants={fadeInUp} className="font-serif text-[2rem] md:text-[clamp(3rem,5vw,5.5rem)] leading-[1.1] mb-md text-inherit">
               Designing Spaces That Breathe.
             </motion.h1>
             <motion.p variants={fadeInUp} className="text-[1.2rem] mb-lg opacity-90 font-light leading-[1.6]">
@@ -105,7 +105,7 @@ export default function Home() {
       </section>
 
       {/* STATS SECTION */}
-      <section className="p-0 mt-[-80px] relative z-20 mb-lg">
+      <section className="p-0 mt-[-60px] md:mt-[-80px] relative z-20 mb-lg">
         <div className="container-custom">
           <div className="bg-[#131F38]/85 backdrop-blur-[20px] border border-white/10 rounded-[20px] py-[2.5rem] px-[2rem] text-bg-light shadow-[0_30px_60px_rgba(0,0,0,0.3)]">
             <motion.div 
@@ -115,7 +115,7 @@ export default function Home() {
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerContainer}
             >
-              <motion.h2 variants={fadeInUp} className="font-serif text-[2rem] text-inherit">Numbers that tell our story</motion.h2>
+              <motion.h2 variants={fadeInUp} className="font-serif text-[1.8rem] md:text-[2rem] text-inherit">Numbers that tell our story</motion.h2>
             </motion.div>
 
             <motion.div 
@@ -145,8 +145,8 @@ export default function Home() {
       </section>
 
       {/* ABOUT SECTION */}
-      <section className="py-2xl bg-bg-light text-text-dark" ref={aboutRef}>
-        <div className="container grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+      <section className="py-xl md:py-2xl bg-bg-light text-text-dark" ref={aboutRef}>
+        <div className="container-custom grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
           <motion.div 
             className="md:pr-xl"
             initial="hidden"
@@ -155,7 +155,7 @@ export default function Home() {
             variants={staggerContainer}
           >
             <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">About Us</motion.span>
-            <motion.h2 variants={fadeInUp} className="font-serif text-[3rem] mb-sm text-inherit">Crafting Timeless Interiors</motion.h2>
+            <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">Crafting Timeless Interiors</motion.h2>
             <motion.p variants={fadeInUp} className="text-[1.1rem] leading-[1.8] text-inherit opacity-80 mb-lg">
               At Shreev Livings, we believe that your environment profoundly impacts your well-being. Our approach to interior design goes beyond simple aesthetics; we craft functional art that elevates your daily life.
             </motion.p>
@@ -190,7 +190,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES SECTION */}
-      <section className="py-2xl bg-primary text-bg-light">
+      <section className="py-xl md:py-2xl bg-primary text-bg-light">
         <div className="container-custom">
           <motion.div 
             className="text-center mb-xl"
@@ -200,7 +200,7 @@ export default function Home() {
             variants={staggerContainer}
           >
             <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">Our Expertise</motion.span>
-            <motion.h2 variants={fadeInUp} className="font-serif text-[3rem] mb-sm text-inherit">Bespoke Services</motion.h2>
+            <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">Bespoke Services</motion.h2>
           </motion.div>
 
           <motion.div 
@@ -229,7 +229,7 @@ export default function Home() {
       </section>
 
       {/* PROCESS SECTION */}
-      <section className="py-2xl bg-bg-light text-text-dark">
+      <section className="py-xl md:py-2xl bg-bg-light text-text-dark">
         <div className="container-custom">
           <motion.div 
             className="text-center mb-xl"
@@ -239,7 +239,7 @@ export default function Home() {
             variants={staggerContainer}
           >
             <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">How We Work</motion.span>
-            <motion.h2 variants={fadeInUp} className="font-serif text-[3rem] mb-sm text-inherit">The Design Process</motion.h2>
+            <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">The Design Process</motion.h2>
           </motion.div>
 
           <motion.div 
@@ -268,7 +268,7 @@ export default function Home() {
       </section>
 
       {/* FEATURES SECTION */}
-      <section className="py-2xl bg-primary text-bg-light">
+      <section className="py-xl md:py-2xl bg-primary text-bg-light">
         <div className="container-custom">
           <motion.div 
             className="text-center mb-xl"
@@ -278,7 +278,7 @@ export default function Home() {
             variants={staggerContainer}
           >
             <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">Our Features</motion.span>
-            <motion.h2 variants={fadeInUp} className="font-serif text-[3rem] mb-sm text-inherit">The Shreev Advantage</motion.h2>
+            <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">The Shreev Advantage</motion.h2>
           </motion.div>
 
           <motion.div 
@@ -305,7 +305,7 @@ export default function Home() {
       </section>
 
       {/* PORTFOLIO PREVIEW SECTION */}
-      <section className="py-2xl bg-bg-light text-text-dark">
+      <section className="py-xl md:py-2xl bg-bg-light text-text-dark">
         <div className="container-custom">
           <motion.div 
             className="flex flex-col md:flex-row justify-between items-start md:items-end gap-md md:gap-0 mb-xl"
@@ -316,7 +316,7 @@ export default function Home() {
           >
             <div>
               <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">Selected Works</motion.span>
-              <motion.h2 variants={fadeInUp} className="font-serif text-[3rem] mb-sm text-inherit">Our Portfolio</motion.h2>
+              <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">Our Portfolio</motion.h2>
             </div>
             <motion.div variants={fadeInUp}>
               <Button variant="secondary" href="/portfolio">View All Projects</Button>
@@ -354,7 +354,7 @@ export default function Home() {
       </section>
 
       {/* MATERIALS & LIGHTINGS SHOWCASE SECTION */}
-      <section className="py-2xl bg-bg-light text-text-dark" style={{ backgroundColor: 'var(--color-bg-light)', paddingBottom: 'var(--spacing-2xl)' }}>
+      <section className="py-xl md:py-2xl bg-bg-light text-text-dark" style={{ backgroundColor: 'var(--color-bg-light)' }}>
         <div className="container-custom">
           <motion.div 
             style={{ textAlign: 'center', marginBottom: 'var(--spacing-xl)' }}
@@ -364,7 +364,7 @@ export default function Home() {
             variants={staggerContainer}
           >
             <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">Our Resources</motion.span>
-            <motion.h2 variants={fadeInUp} className="font-serif text-[3rem] mb-sm text-inherit">Curated Libraries</motion.h2>
+            <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">Curated Libraries</motion.h2>
             <motion.p variants={fadeInUp} className="text-[1.1rem] leading-[1.8] text-inherit opacity-80 mb-lg" style={{ maxWidth: '600px', margin: '0 auto' }}>
               Explore our extensive libraries of premium materials and bespoke lighting solutions to inspire your next project.
             </motion.p>
@@ -411,8 +411,8 @@ export default function Home() {
       </section>
 
       {/* FAQ / WHY CHOOSE US SECTION */}
-      <section className="py-2xl bg-primary text-bg-light">
-        <div className="container grid grid-cols-1 lg:grid-cols-2 gap-lg lg:gap-xl items-start">
+      <section className="py-xl md:py-2xl bg-primary text-bg-light">
+        <div className="container-custom grid grid-cols-1 lg:grid-cols-2 gap-lg lg:gap-xl items-start">
           <motion.div 
             className="static lg:sticky lg:top-[120px] mb-lg lg:mb-0"
             initial="hidden"
@@ -421,7 +421,7 @@ export default function Home() {
             variants={staggerContainer}
           >
             <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">FAQ</motion.span>
-            <motion.h2 variants={fadeInUp} className="font-serif text-[3rem] mb-sm text-inherit">Elevating Everyday Living</motion.h2>
+            <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">Elevating Everyday Living</motion.h2>
             <motion.p variants={fadeInUp} className="text-[1.1rem] leading-[1.8] text-inherit opacity-80 mb-lg" style={{ marginTop: '1.5rem' }}>
               We don't just design spaces; we curate lifestyles. Here are some of the reasons our clients trust us with their most personal environments.
             </motion.p>
@@ -450,7 +450,7 @@ export default function Home() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-[8rem] bg-secondary text-primary text-center">
+      <section className="py-xl md:py-[8rem] bg-secondary text-primary text-center">
         <div className="container-custom">
           <motion.h2 
             className="font-serif text-[clamp(2.5rem,5vw,4rem)] mb-[2rem] text-primary"

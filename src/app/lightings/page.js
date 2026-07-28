@@ -86,11 +86,11 @@ export default function Lightings() {
 
   return (
     <main className="w-full">
-      <section className="pt-[150px] pb-2xl min-h-screen text-text-dark bg-bg-light">
+      <section className="pt-[100px] md:pt-[150px] pb-xl md:pb-2xl min-h-screen text-text-dark bg-bg-light">
         <div className="container-custom">
           <div className="text-center mb-xl">
             <span className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">Illumination</span>
-            <h1 className="font-serif text-[3rem] mb-sm text-inherit">Bespoke Lighting Solutions</h1>
+            <h1 className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">Bespoke Lighting Solutions</h1>
           </div>
 
           <div className="flex justify-center gap-md mb-xl flex-wrap">
@@ -116,7 +116,7 @@ export default function Lightings() {
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
                   <div className="lg:pr-lg">
-                    <h2 className="font-serif text-[3rem] mb-md text-text-dark">{activeLighting.heading}</h2>
+                    <h2 className="font-serif text-[2rem] md:text-[3rem] mb-md text-text-dark">{activeLighting.heading}</h2>
                     <p className="text-[1.1rem] leading-[1.8] text-text-muted mb-lg">{activeLighting.description}</p>
                     
                     <div className="flex flex-col gap-sm mb-lg">
@@ -146,7 +146,7 @@ export default function Lightings() {
 
                 {/* OPTIONS GRID */}
                 <div className="mt-xl pt-xl border-t border-black/5">
-                  <h3 className="font-serif text-[2rem] mb-lg text-text-dark text-center">Explore {activeLighting.title} Options</h3>
+                  <h3 className="font-serif text-[1.8rem] md:text-[2rem] mb-lg text-text-dark text-center">Explore {activeLighting.title} Options</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
                     {activeLighting.options.map((opt, idx) => (
                       <motion.div 
@@ -179,7 +179,7 @@ export default function Lightings() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-[8rem] bg-secondary text-primary text-center">
+      <section className="py-xl md:py-[8rem] bg-secondary text-primary text-center">
         <div className="container-custom">
           <motion.h2 
             className="font-serif text-[clamp(2.5rem,5vw,4rem)] mb-[2rem] text-primary"

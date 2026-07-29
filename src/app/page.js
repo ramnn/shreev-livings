@@ -66,7 +66,7 @@ export default function Home() {
     <main className="w-full">
       {/* HERO SECTION */}
       <section ref={heroRef} className="min-h-screen bg-primary text-bg-light flex items-center relative overflow-hidden pt-[100px] pb-[120px]">
-        <div className="container-custom grid grid-cols-1 md:grid-cols-2 gap-xl items-center w-full py-xl md:py-0">
+        <div className="container-custom grid grid-cols-1 md:grid-cols-2 gap-lg md:gap-xl items-center w-full pt-md pb-xl md:py-0">
           <motion.div 
             className="text-bg-light z-10"
             variants={staggerContainer}
@@ -79,14 +79,14 @@ export default function Home() {
             <motion.p variants={fadeInUp} className="text-[1.2rem] mb-lg opacity-90 font-light leading-[1.6]">
               Shreev Livings creates sophisticated, tailored interiors that seamlessly blend modern elegance with everyday comfort.
             </motion.p>
-            <motion.div variants={fadeInUp} className="flex gap-md">
+            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-md">
               <Button variant="accent" href="/portfolio">Explore Portfolio</Button>
               <Button variant="secondary" style={{ borderColor: 'var(--color-accent)', color: 'var(--color-accent)' }} href="/contact">Book Consultation</Button>
             </motion.div>
           </motion.div>
 
           <motion.div 
-            className="relative h-[50vh] md:h-[75vh] min-h-[400px] md:min-h-[500px] w-full rounded-[8px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+            className="relative h-[40vh] md:h-[75vh] min-h-[300px] md:min-h-[500px] w-full rounded-[8px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] mt-md md:mt-0"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}

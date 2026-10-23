@@ -1,68 +1,88 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Button from '../../components/Button';
 import Image from 'next/image';
-import { FiMapPin, FiMail, FiPhone } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+import { FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
+import Button from '../../components/Button';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 };
 
 export default function Contact() {
   return (
     <main className="w-full">
-      <section className="min-h-screen pt-[100px] md:pt-[150px] pb-xl md:pb-[100px] bg-bg-light flex items-center">
+      <section className="flex min-h-screen items-center bg-bg-light pb-xl pt-[100px] md:pt-[150px]">
         <div className="container-custom">
-          <motion.div 
-            className="grid grid-cols-1 lg:grid-cols-2 gap-xl bg-bg-light rounded-[8px] shadow-[0_30px_60px_rgba(0,0,0,0.05)] overflow-hidden"
+          <motion.div
             initial="hidden"
             animate="visible"
             variants={{
-              hidden: { opacity: 0, y: 40 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.8, staggerChildren: 0.2 } }
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.8, staggerChildren: 0.15 } },
             }}
+            className="grid gap-xl overflow-hidden rounded-[12px] bg-bg-light shadow-[0_30px_60px_rgba(0,0,0,0.05)] lg:grid-cols-2"
           >
-            
-            {/* Left Side: Contact Information */}
-            <motion.div className="bg-primary text-bg-light p-xl flex flex-col justify-between" variants={fadeInUp}>
+            <motion.div variants={fadeInUp} className="flex flex-col justify-between bg-primary p-xl text-bg-light">
               <div>
-                <h1 className="font-serif text-[2rem] md:text-[3rem] mb-md text-secondary">Let's create something beautiful.</h1>
-                <p className="text-[1.1rem] leading-[1.6] opacity-90 mb-xl">
-                  Whether you're looking to completely remodel your home or simply need expert styling advice, our team is ready to bring your vision to life.
+                <h1 className="mb-md font-serif text-[2.3rem] leading-tight text-secondary md:text-[3rem]">
+                  Let’s create something beautiful.
+                </h1>
+                <p className="mb-xl max-w-lg text-[1.08rem] leading-[1.8] text-white/80">
+                  Whether you’re redesigning a full home or refining a single room, our team is ready to translate your vision into a tactile, refined reality.
                 </p>
-                
+
                 <div className="mb-lg">
-                  <span className="uppercase text-[0.85rem] tracking-[0.1em] text-secondary mb-sm block"><FiMapPin className="inline mr-2"/> Office</span>
-                  <p className="text-[1.1rem] leading-[1.5]">A-615, Titanium Heights, near vodafone house, corporate road, Prahlad Nagar, Makarba, Ahmedabad, Gujarat, 380015</p>
+                  <span className="mb-sm block font-sans uppercase tracking-[0.1em] text-[0.8rem] text-secondary">
+                    <FiMapPin className="mr-2 inline" /> Office
+                  </span>
+                  <p className="text-[1.05rem] leading-[1.7] text-white/80">
+                    A-615, Titanium Heights, near vodafone house, corporate road, Prahlad Nagar, Makarba, Ahmedabad, Gujarat, 380015
+                  </p>
                 </div>
-                
+
                 <div className="mb-lg">
-                  <span className="uppercase text-[0.85rem] tracking-[0.1em] text-secondary mb-sm block"><FiMail className="inline mr-2"/> Inquiries</span>
-                  <p className="text-[1.1rem] leading-[1.5]">shreevlivings@gmail.com</p>
+                  <span className="mb-sm block font-sans uppercase tracking-[0.1em] text-[0.8rem] text-secondary">
+                    <FiMail className="mr-2 inline" /> Inquiries
+                  </span>
+                  <a href="mailto:shreevlivings@gmail.com" className="text-[1.05rem] text-white/80 transition-colors hover:text-secondary">
+                    shreevlivings@gmail.com
+                  </a>
                 </div>
-                
+
                 <div className="mb-lg">
-                  <span className="uppercase text-[0.85rem] tracking-[0.1em] text-secondary mb-sm block"><FiPhone className="inline mr-2"/> Phone</span>
-                  <p className="text-[1.1rem] leading-[1.5]">+91 99984 39939</p>
-                  <p className="text-[1.1rem] leading-[1.5]">+91 99983 13933</p>
+                  <span className="mb-sm block font-sans uppercase tracking-[0.1em] text-[0.8rem] text-secondary">
+                    <FiPhone className="mr-2 inline" /> Phone
+                  </span>
+                  <div className="space-y-1 text-[1.05rem] text-white/80">
+                    <p>+91 99984 39939</p>
+                    <p>+91 99983 13933</p>
+                  </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Right Side: Creative Section Replacement */}
-            <motion.div className="h-full min-h-[500px] relative rounded-[4px] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.1)]" variants={fadeInUp}>
-              <div className="absolute top-0 left-0 w-full h-full">
-                <Image src="/images/hero_interior_1779040229551.png" alt="Luxury Interior" fill className="object-cover w-full h-full" />
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-[#131F38]/90 to-[#131F38]/20 flex flex-col justify-end items-start p-2xl text-bg-light">
-                  <h3 className="font-serif text-[2rem] md:text-[2.5rem] mb-sm text-white">Your Dream Space Awaits</h3>
-                  <p className="font-sans text-[1.1rem] mb-lg opacity-90">Connect with our principal designers today to begin curating your perfect environment.</p>
-                  <Button variant="accent" onClick={() => window.open('https://wa.me/919998439939', '_blank')}>Contact Us</Button>
-                </div>
+            <motion.div variants={fadeInUp} className="relative min-h-[500px] overflow-hidden">
+              <div className="absolute inset-0">
+                <Image src="/images/hero_interior_1779040229551.png" alt="Luxury interior" fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#131F38]/90 to-[#131F38]/20" />
+              </div>
+
+              <div className="relative z-10 flex h-full flex-col justify-end p-xl text-bg-light">
+                <h2 className="mb-sm font-serif text-[2.2rem] leading-tight md:text-[2.7rem]">Your Dream Space Awaits</h2>
+                <p className="mb-lg max-w-md text-[1.05rem] leading-[1.8] text-white/80">
+                  Connect with our design team today to begin curating your perfect environment.
+                </p>
+                <Button
+                  variant="accent"
+                  onClick={() => window.open('https://wa.me/919998439939', '_blank')}
+                  className="w-fit"
+                >
+                  Contact Us
+                </Button>
               </div>
             </motion.div>
-
           </motion.div>
         </div>
       </section>

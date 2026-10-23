@@ -32,6 +32,22 @@ export const servicesData = [
     benefits: ['Stronger brand perception', 'Increased employee productivity', 'Optimized spatial efficiency', 'Future-proof, scalable designs']
   },
   {
+    id: 'hospitality',
+    title: 'Hospitality Design',
+    subtitle: 'Memorable Guest Experiences',
+    description: 'Create immersive, welcoming hospitality spaces that elevate guest experience while aligning with your brand story, operational goals, and premium service standards.',
+    image: '/images/portfolio_office_1779040274216.png',
+    features: ['Guest-first spatial planning', 'Luxury brand storytelling', 'Operationally efficient layouts', 'Atmospheric lighting and textures'],
+    aboutService: 'Hospitality spaces are where design directly shapes emotion, comfort, and brand recall. We create memorable guest experiences through thoughtful spatial planning, layered textures, warm lighting, and refined detailing that turns first impressions into lasting loyalty.',
+    process: [
+      { step: '01', title: 'Brand & Guest Journey Mapping', desc: 'Understanding your target audience, service philosophy, and guest behavioral flow.' },
+      { step: '02', title: 'Space Planning', desc: 'Creating layouts that balance ambience, circulation, comfort, and operational efficiency.' },
+      { step: '03', title: 'Material & Mood Design', desc: 'Selecting tactile finishes, lighting, and furnishings that reflect premium hospitality standards.' },
+      { step: '04', title: 'Handover & Styling', desc: 'Final installation and styling that ensures the guest experience feels polished, inviting, and memorable.' }
+    ],
+    benefits: ['Elevated guest experience', 'Stronger brand recall', 'Operational efficiency', 'Luxury-first atmosphere']
+  },
+  {
     id: 'turnkey',
     title: 'Turnkey Solutions',
     subtitle: 'End-to-End Execution',

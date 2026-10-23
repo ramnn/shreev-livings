@@ -1,142 +1,172 @@
 'use client';
 
-import { useRef, useState } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { FiHome, FiLayout, FiBox, FiKey, FiLayers, FiPenTool, FiPlus, FiAward, FiClock, FiStar, FiShield, FiMapPin } from 'react-icons/fi';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef, useState } from 'react';
+import {
+  FiAward,
+  FiBox,
+  FiCheckCircle,
+  FiClock,
+  FiHome,
+  FiKey,
+  FiLayers,
+  FiMapPin,
+  FiPenTool,
+  FiPhone,
+  FiPlus,
+  FiShield,
+  FiStar,
+} from 'react-icons/fi';
 import Button from '../components/Button';
+import CtaSection from '../components/CtaSection';
+import SectionHeader from '../components/SectionHeader';
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } }
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
 };
 
-const staggerContainer = {
+const stagger = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.25, delayChildren: 0.1 }
-  }
+  visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
 };
 
-const FAQItem = ({ question, answer }) => {
+const stats = [
+  { icon: FiHome, value: '100+', label: 'homes delivered' },
+  { icon: FiMapPin, value: '5+', label: 'cities served' },
+  { icon: FiLayers, value: '3', label: 'stores' },
+  { icon: FiStar, value: '4.8★', label: 'average rating' },
+];
+
+const services = [
+  { icon: FiKey, title: 'Turnkey Projects', description: 'End-to-end management from concept to final styling and handover.' },
+  { icon: FiHome, title: 'Residential Design', description: 'Luxury homes designed around comfort, flow, and personal identity.' },
+  { icon: FiLayers, title: 'Commercial Spaces', description: 'Workplaces and boutiques shaped for efficiency and brand presence.' },
+  { icon: FiBox, title: '3D Visualization', description: 'Photorealistic previews to help clients make confident choices.' },
+  { icon: FiPenTool, title: 'Custom Furniture', description: 'Bespoke pieces created to fit your exact lifestyle and dimensions.' },
+  { icon: FiClock, title: 'Renovation & Styling', description: 'Transform existing spaces with premium materials and thoughtful detailing.' },
+];
+
+const process = [
+  { no: '01', title: 'Consultation', description: 'We understand your vision, priorities, style, and project scope.' },
+  { no: '02', title: 'Concept Design', description: 'Moodboards, layouts, and material direction begin to shape the experience.' },
+  { no: '03', title: '3D Preview', description: 'Realistic visuals help you feel the space before execution begins.' },
+  { no: '04', title: 'Material Selection', description: 'Premium finishes and custom pieces are aligned with your final vision.' },
+  { no: '05', title: 'Execution', description: 'Our team coordinates quality checks, timelines, and craftsmanship.' },
+  { no: '06', title: 'Styling & Handover', description: 'Every detail is refined before you step into your finished space.' },
+];
+
+const features = [
+  { icon: FiAward, title: 'Uncompromising Quality', description: 'Premium selection of materials and long-lasting craftsmanship.' },
+  { icon: FiShield, title: 'End-to-End Execution', description: 'Every stage handled with clarity, accountability, and attention to detail.' },
+  { icon: FiStar, title: 'Bespoke Philosophy', description: 'Each project is designed around your way of living and entertaining.' },
+  { icon: FiClock, title: 'On-Time Delivery', description: 'Structured planning keeps your project moving without unnecessary delay.' },
+];
+
+const portfolioPreview = [
+  { title: 'The Evergreen Estate', category: 'Residential', image: '/images/portfolio_bedroom_1779040259154.png' },
+  { title: 'Metropolitan Studio', category: 'Workspace', image: '/images/portfolio_office_1779040274216.png' },
+];
+
+const faqs = [
+  { question: 'What makes Shreev Livings different?', answer: 'We combine luxury aesthetics with practical living. Every space is designed for comfort, function, and a lasting impression.' },
+  { question: 'Do you handle full execution?', answer: 'Yes. Our turnkey process includes design, sourcing, coordination, installation, and final styling.' },
+  { question: 'Can you work within a budget?', answer: 'Absolutely. We align the design with your goals and keep the scope honest, efficient, and realistic.' },
+  { question: 'Do you offer custom furniture?', answer: 'Yes, we create bespoke furniture and joinery to suit the proportions and character of your space.' },
+];
+
+function FAQItem({ question, answer }) {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
-    <div className="border-b border-black/10 pb-md">
-      <div className="flex justify-between items-center font-serif text-[1.4rem] text-inherit cursor-pointer py-sm transition-fast hover:text-secondary" onClick={() => setIsOpen(!isOpen)}>
-        <h3>{question}</h3>
-        <FiPlus className="text-secondary transition-transform duration-300 ease-in-out ${isOpen ? 'rotate-45' : ''}" size={24} />
-      </div>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <p className="text-inherit opacity-80 leading-[1.8] pt-sm pb-sm">{answer}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <div className="border-b border-white/10 pb-md">
+      <button
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
+        className="flex w-full items-center justify-between gap-md py-sm text-left"
+      >
+        <span className="font-serif text-[1.2rem] text-inherit">{question}</span>
+        <FiPlus className={`text-secondary transition-transform duration-200 ${isOpen ? 'rotate-45' : ''}`} size={22} />
+      </button>
+
+      {isOpen && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          className="overflow-hidden"
+        >
+          <p className="pb-sm text-[1rem] leading-[1.8] text-white/75">{answer}</p>
+        </motion.div>
+      )}
     </div>
   );
-};
+}
 
 export default function Home() {
-  const router = useRouter();
   const heroRef = useRef(null);
-  const { scrollYProgress: heroScroll } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-  const heroY = useTransform(heroScroll, [0, 1], ["0%", "20%"]);
-
   const aboutRef = useRef(null);
-  const { scrollYProgress: aboutScroll } = useScroll({
-    target: aboutRef,
-    offset: ["start end", "end start"]
-  });
-  const aboutImageY = useTransform(aboutScroll, [0, 1], ["-10%", "10%"]);
+
+  const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const { scrollYProgress: aboutScroll } = useScroll({ target: aboutRef, offset: ['start end', 'end start'] });
+
+  const heroY = useTransform(heroScroll, [0, 1], ['0%', '18%']);
+  const aboutImageY = useTransform(aboutScroll, [0, 1], ['-10%', '12%']);
 
   return (
     <main className="w-full">
-      {/* HERO SECTION */}
-      <section ref={heroRef} className="min-h-screen bg-primary text-bg-light flex items-center relative overflow-hidden pt-[100px] pb-[120px]">
-        <div className="container-custom grid grid-cols-1 md:grid-cols-2 gap-lg md:gap-xl items-center w-full pt-md pb-xl md:py-0">
-          <motion.div 
-            className="text-bg-light z-10"
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.h1 variants={fadeInUp} className="font-serif text-[2rem] md:text-[clamp(3rem,5vw,5.5rem)] leading-[1.1] mb-md text-inherit">
+      <section ref={heroRef} className="relative flex min-h-screen items-center overflow-hidden bg-primary pt-[100px] pb-[120px] text-bg-light">
+        <div className="container-custom grid w-full items-center gap-lg md:grid-cols-2 md:gap-xl">
+          <motion.div initial="hidden" animate="visible" variants={stagger} className="z-10">
+            <motion.h1 variants={fadeInUp} className="mb-md font-serif text-[2.1rem] leading-[1.1] md:text-[clamp(3rem,5vw,5.5rem)]">
               Designing Spaces That Breathe.
             </motion.h1>
-            <motion.p variants={fadeInUp} className="text-[1.2rem] mb-lg opacity-90 font-light leading-[1.6]">
-              Shreev Livings creates sophisticated, tailored interiors that seamlessly blend modern elegance with everyday comfort.
+
+            <motion.p variants={fadeInUp} className="mb-lg max-w-full text-[1.1rem] leading-[1.8] text-white/85">
+              Shreev Livings creates refined interiors that blend luxury, comfort, and personality into every room.
             </motion.p>
-            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-md">
-              <Button variant="accent" href="/portfolio">Explore Portfolio</Button>
-              <Button variant="secondary" style={{ borderColor: 'var(--color-accent)', color: 'var(--color-accent)' }} href="/contact">Book Consultation</Button>
+
+            <motion.div variants={fadeInUp} className="flex flex-col gap-md sm:flex-row">
+              <Button variant="accent" href="/portfolio">Explore Projects</Button>
+              <Button variant="secondary" href="/contact">Book Consultation</Button>
             </motion.div>
           </motion.div>
 
-          <motion.div 
-            className="relative h-[40vh] md:h-[75vh] min-h-[300px] md:min-h-[500px] w-full rounded-[8px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] mt-md md:mt-0"
-            initial={{ opacity: 0, x: 50 }}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.9, delay: 0.2 }}
+            className="relative h-[42vh] min-h-[300px] w-full overflow-hidden rounded-[12px] shadow-[0_20px_50px_rgba(0,0,0,0.35)] md:h-[72vh]"
           >
             <motion.div style={{ width: '100%', height: '110%', position: 'absolute', top: '-5%', y: heroY }}>
-              <Image 
-                src="/images/hero_interior_1779040229551.png" 
-                alt="Modern Luxury Living Room" 
-                fill 
-                priority
-                className="object-cover"
-              />
+              <Image src="/images/hero_interior_1779040229551.png" alt="Luxury interior" fill className="object-cover" priority />
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* STATS SECTION */}
-      <section className="p-0 mt-[-60px] md:mt-[-80px] relative z-20 mb-lg">
+      <section className="relative z-20 -mt-[60px] mb-lg md:-mt-[80px]">
         <div className="container-custom">
-          <div className="bg-[#131F38]/85 backdrop-blur-[20px] border border-white/10 rounded-[20px] py-[2.5rem] px-[2rem] text-bg-light shadow-[0_30px_60px_rgba(0,0,0,0.3)]">
-            <motion.div 
-              className="text-center mb-lg"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={staggerContainer}
-            >
-              <motion.h2 variants={fadeInUp} className="font-serif text-[1.8rem] md:text-[2rem] text-inherit">Numbers that tell our story</motion.h2>
+          <div className="rounded-[20px] border border-white/10 bg-[#131F38]/90 px-[1.5rem] py-[1rem] text-bg-light shadow-[0_30px_60px_rgba(0,0,0,0.28)] backdrop-blur-sm">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={stagger} className="mb-lg text-center">
+              <motion.h2 variants={fadeInUp} className="font-serif text-[1.9rem] md:text-[2rem]">Numbers that tell our story</motion.h2>
             </motion.div>
 
-            <motion.div 
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-lg md:gap-xl text-center"
+            <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={staggerContainer}
+              viewport={{ once: true, margin: '-100px' }}
+              variants={stagger}
+              className="grid grid-cols-1 gap-lg text-center sm:grid-cols-2 md:grid-cols-4"
             >
-              {[
-                { icon: FiHome, num: "100+", label: "homes delivered" },
-                { icon: FiMapPin, num: "5+", label: "cities served" },
-                { icon: FiLayers, num: "3", label: "stores" },
-                { icon: FiStar, num: "4.8★", label: "average rating" }
-              ].map((stat, idx) => (
-                <motion.div key={idx} className="flex flex-col items-center group" variants={fadeInUp}>
-                  <div className="w-[60px] h-[60px] border border-white/20 rounded-[12px] flex items-center justify-center mb-sm transition-fast group-hover:border-secondary group-hover:-translate-y-[5px]">
-                    <stat.icon size={28} className="text-bg-light transition-fast group-hover:text-secondary" />
+              {stats.map(({ icon: Icon, value, label }) => (
+                <motion.div key={label} variants={fadeInUp} className="group flex flex-col items-center">
+                  <div className="mb-sm flex h-[50px] w-[50px] items-center justify-center rounded-[12px] border border-white/20 transition-all duration-300 group-hover:-translate-y-[5px] group-hover:border-secondary">
+                    <Icon size={24} className="text-bg-light group-hover:text-secondary" />
                   </div>
-                  <div className="font-serif text-[2.2rem] mb-xs text-inherit">{stat.num}</div>
-                  <div className="font-sans text-[0.9rem] opacity-80">{stat.label}</div>
+                  <div className="mb-xs font-serif text-[2rem]">{value}</div>
+                  <div className="text-[0.9rem] uppercase tracking-[0.08em] text-white/75">{label}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -144,335 +174,156 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT SECTION */}
-      <section className="py-xl md:py-2xl bg-bg-light text-text-dark" ref={aboutRef}>
-        <div className="container-custom grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
-          <motion.div 
-            className="md:pr-xl"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">About Us</motion.span>
-            <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">Crafting Timeless Interiors</motion.h2>
-            <motion.p variants={fadeInUp} className="text-[1.1rem] leading-[1.8] text-inherit opacity-80 mb-lg">
-              At Shreev Livings, we believe that your environment profoundly impacts your well-being. Our approach to interior design goes beyond simple aesthetics; we craft functional art that elevates your daily life.
+      <section ref={aboutRef} className="bg-bg-light py-xl text-text-dark md:py-2xl">
+        <div className="container-custom grid items-center gap-xl md:grid-cols-2">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={stagger} className="md:pr-xl">
+            <motion.span variants={fadeInUp} className="mb-md block font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary">About Us</motion.span>
+            <motion.h2 variants={fadeInUp} className="mb-sm font-serif text-[2.2rem] md:text-[3rem]">Crafting Timeless Interiors</motion.h2>
+            <motion.p variants={fadeInUp} className="mb-lg text-[1.08rem] leading-[1.8] text-text-dark/80">
+              At Shreev Livings, we believe interiors should shape the way you live, feel, and connect. Our work blends clean geometry, premium finishes, and human warmth into timeless spaces.
             </motion.p>
-            <motion.p variants={fadeInUp} className="text-[1.1rem] leading-[1.8] text-inherit opacity-80 mb-lg">
-              Whether it's a sprawling residential estate or a boutique commercial space, we bring a meticulous eye for detail, premium materials, and a deep understanding of spatial harmony to every project.
+            <motion.p variants={fadeInUp} className="mb-lg text-[1.08rem] leading-[1.8] text-text-dark/80">
+              From residences to hospitality and commercial concepts, we craft spaces that feel elevated, effortless, and deeply personal.
             </motion.p>
-            <motion.div variants={fadeInUp} style={{ marginTop: '2.5rem' }}>
+            <motion.div variants={fadeInUp} className="mt-[2.5rem]">
               <Button variant="primary" href="/about">Read Our Story</Button>
             </motion.div>
           </motion.div>
-          
-          <div className="aboutImageContainer">
-            <motion.div 
-              className="relative h-[400px] md:h-[600px] rounded-[4px] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.1)]"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1, ease: "easeOut" }}
-            >
-              <motion.div style={{ width: '100%', height: '110%', position: 'absolute', top: '-5%', y: aboutImageY }}>
-                <Image 
-                  src="/images/about_interior_1779040244800.png" 
-                  alt="Minimalist Kitchen Design" 
-                  fill 
-                  className="object-cover"
-                  style={{ objectFit: 'cover' }}
-                />
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
-      {/* SERVICES SECTION */}
-      <section className="py-xl md:py-2xl bg-primary text-bg-light">
-        <div className="container-custom">
-          <motion.div 
-            className="text-center mb-xl"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">Our Expertise</motion.span>
-            <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">Bespoke Services</motion.h2>
-          </motion.div>
-
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-lg"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            {[
-              { icon: FiKey, title: "Turnkey Projects", desc: "End-to-end project management, from initial concept to final flawless execution." },
-              { icon: FiHome, title: "Residential Design", desc: "Full-scale interior architecture and spatial planning for luxury homes." },
-              { icon: FiLayout, title: "Commercial Spaces", desc: "Creating inspiring, brand-aligned environments for offices and boutiques." },
-              { icon: FiBox, title: "3D Visualization", desc: "Photorealistic 3D renderings to help you visualize your space before construction." },
-              { icon: FiLayers, title: "Custom Furniture", desc: "Bespoke furniture design and sourcing tailored to your specific aesthetic." },
-              { icon: FiPenTool, title: "Renovation & Styling", desc: "Comprehensive renovation services and finishing touches to elevate your existing space." }
-            ].map((service, idx) => (
-              <motion.div key={idx} className="bg-white/5 py-xl px-lg rounded-[4px] border border-white/10 transition-smooth hover:-translate-y-[10px] hover:bg-white/10 hover:border-secondary" variants={fadeInUp} whileHover={{ y: -10, transition: { duration: 0.3 } }}>
-                <service.icon size={42} className="text-secondary mb-md" />
-                <h3 className="font-serif text-[1.5rem] mb-sm text-inherit">{service.title}</h3>
-                <p className="text-inherit opacity-80 leading-[1.6]">{service.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* PROCESS SECTION */}
-      <section className="py-xl md:py-2xl bg-bg-light text-text-dark">
-        <div className="container-custom">
-          <motion.div 
-            className="text-center mb-xl"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">How We Work</motion.span>
-            <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">The Design Process</motion.h2>
-          </motion.div>
-
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            {[
-              { num: "01", title: "Consultation & Brief", desc: "We start by understanding your vision, lifestyle, and requirements to establish the creative direction." },
-              { num: "02", title: "Concept & Space Planning", desc: "Our architects optimize spatial flow and develop initial mood boards to define the exact aesthetic." },
-              { num: "03", title: "3D Visualization", desc: "We create photorealistic 3D renders so you can accurately visualize your fully transformed space." },
-              { num: "04", title: "Material Selection", desc: "We guide you through selecting premium materials, custom furnishings, and bespoke lighting fixtures." },
-              { num: "05", title: "Execution & Build", desc: "Our team manages all procurement and coordinates with expert contractors for flawless site execution." },
-              { num: "06", title: "Styling & Handover", desc: "The final touch: we meticulously style the interiors and hand over your ready-to-live-in dream home." }
-            ].map((step, idx) => (
-              <motion.div key={idx} className="relative py-xl px-lg bg-bg-light border border-black/5 rounded-[4px] transition-smooth hover:-translate-y-[10px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] hover:border-secondary group" variants={fadeInUp}>
-                <span className="font-serif text-[4rem] text-secondary opacity-20 absolute top-[20px] right-[20px] leading-none transition-smooth group-hover:opacity-80 group-hover:scale-110">{step.num}</span>
-                <h3 className="font-serif text-[1.5rem] text-inherit mb-sm mt-lg relative z-10">{step.title}</h3>
-                <p className="text-inherit opacity-80 leading-[1.6] text-[0.95rem] relative z-10">{step.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FEATURES SECTION */}
-      <section className="py-xl md:py-2xl bg-primary text-bg-light">
-        <div className="container-custom">
-          <motion.div 
-            className="text-center mb-xl"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">Our Features</motion.span>
-            <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">The Shreev Advantage</motion.h2>
-          </motion.div>
-
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            {[
-              { icon: FiAward, title: "Uncompromising Quality", desc: "We source the finest materials globally to ensure unparalleled craftsmanship and durability." },
-              { icon: FiShield, title: "End-to-End Execution", desc: "From concept to handover, we manage every detail with complete transparency and accountability." },
-              { icon: FiStar, title: "Bespoke Philosophy", desc: "No two projects are alike. We design tailored environments reflecting your unique lifestyle." },
-              { icon: FiClock, title: "On-Time Delivery", desc: "Our strict project management ensures your dream space is handed over exactly when promised." }
-            ].map((feature, idx) => (
-              <motion.div key={idx} className="text-center py-xl px-md border-b sm:border-b-0 sm:border-r border-white/10 transition-fast hover:-translate-y-[5px] last:border-0" variants={fadeInUp}>
-                <feature.icon size={40} className="text-secondary mb-md" />
-                <h3 className="font-serif text-[1.3rem] mb-sm text-inherit">{feature.title}</h3>
-                <p className="text-inherit opacity-80 leading-[1.6] text-[0.95rem]">{feature.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* PORTFOLIO PREVIEW SECTION */}
-      <section className="py-xl md:py-2xl bg-bg-light text-text-dark">
-        <div className="container-custom">
-          <motion.div 
-            className="flex flex-col md:flex-row justify-between items-start md:items-end gap-md md:gap-0 mb-xl"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <div>
-              <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">Selected Works</motion.span>
-              <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">Our Portfolio</motion.h2>
-            </div>
-            <motion.div variants={fadeInUp}>
-              <Button variant="secondary" href="/portfolio">View All Projects</Button>
-            </motion.div>
-          </motion.div>
-
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-md"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            {[
-              { title: 'The Azure Residence', category: 'Residential', image: '/images/portfolio_bedroom_1779040259154.png' },
-              { title: 'Lumina Corporate', category: 'Commercial', image: '/images/portfolio_office_1779040274216.png' }
-            ].map((item, idx) => (
-              <motion.div 
-                key={idx} 
-                className="relative h-[400px] md:h-[550px] overflow-hidden rounded-[4px] cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.05)] group"
-                variants={fadeInUp}
-                onClick={() => router.push('/portfolio')}
-              >
-                <div className="absolute top-0 left-0 w-full h-full transition-transform duration-[800ms] ease-smooth group-hover:scale-[1.08]">
-                  <Image src={item.image} alt={item.title} fill className="object-cover" />
-                </div>
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-[#0a111e]/85 to-[#0a111e]/20 opacity-0 transition-opacity duration-600 ease-out flex flex-col justify-end p-xl group-hover:opacity-100">
-                  <span className="text-secondary uppercase tracking-[0.15em] text-[0.85rem] font-medium translate-y-[20px] transition-transform duration-600 ease-smooth delay-75 group-hover:translate-y-0">{item.category}</span>
-                  <h3 className="text-white font-serif text-[2.2rem] translate-y-[20px] transition-transform duration-600 ease-smooth group-hover:translate-y-0">{item.title}</h3>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* MATERIALS & LIGHTINGS SHOWCASE SECTION */}
-      <section className="py-xl md:py-2xl bg-bg-light text-text-dark" style={{ backgroundColor: 'var(--color-bg-light)' }}>
-        <div className="container-custom">
-          <motion.div 
-            style={{ textAlign: 'center', marginBottom: 'var(--spacing-xl)' }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">Our Resources</motion.span>
-            <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">Curated Libraries</motion.h2>
-            <motion.p variants={fadeInUp} className="text-[1.1rem] leading-[1.8] text-inherit opacity-80 mb-lg" style={{ maxWidth: '600px', margin: '0 auto' }}>
-              Explore our extensive libraries of premium materials and bespoke lighting solutions to inspire your next project.
-            </motion.p>
-          </motion.div>
-
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-md"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.div 
-              className="relative h-[400px] md:h-[550px] overflow-hidden rounded-[4px] cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.05)] group"
-              variants={fadeInUp}
-              onClick={() => router.push('/materials')}
-              style={{ height: '400px' }}
-            >
-              <div className="absolute top-0 left-0 w-full h-full transition-transform duration-[800ms] ease-smooth group-hover:scale-[1.08]">
-                <Image src="/images/luxury_tiles_material_1780893606024.png" alt="Materials Library" fill className="object-cover" />
-              </div>
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-[#0a111e]/85 to-[#0a111e]/20 opacity-0 transition-opacity duration-600 ease-out flex flex-col justify-end p-xl group-hover:opacity-100">
-                <span className="text-secondary uppercase tracking-[0.15em] text-[0.85rem] font-medium translate-y-[20px] transition-transform duration-600 ease-smooth delay-75 group-hover:translate-y-0">Textures & Surfaces</span>
-                <h3 className="text-white font-serif text-[2.2rem] translate-y-[20px] transition-transform duration-600 ease-smooth group-hover:translate-y-0">Materials Library</h3>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              className="relative h-[400px] md:h-[550px] overflow-hidden rounded-[4px] cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.05)] group"
-              variants={fadeInUp}
-              onClick={() => router.push('/lightings')}
-              style={{ height: '400px' }}
-            >
-              <div className="absolute top-0 left-0 w-full h-full transition-transform duration-[800ms] ease-smooth group-hover:scale-[1.08]">
-                <Image src="/images/lux_chandelier_1780896539792.png" alt="Lightings Library" fill className="object-cover" />
-              </div>
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-[#0a111e]/85 to-[#0a111e]/20 opacity-0 transition-opacity duration-600 ease-out flex flex-col justify-end p-xl group-hover:opacity-100">
-                <span className="text-secondary uppercase tracking-[0.15em] text-[0.85rem] font-medium translate-y-[20px] transition-transform duration-600 ease-smooth delay-75 group-hover:translate-y-0">Illumination</span>
-                <h3 className="text-white font-serif text-[2.2rem] translate-y-[20px] transition-transform duration-600 ease-smooth group-hover:translate-y-0">Lightings Showcase</h3>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ / WHY CHOOSE US SECTION */}
-      <section className="py-xl md:py-2xl bg-primary text-bg-light">
-        <div className="container-custom grid grid-cols-1 lg:grid-cols-2 gap-lg lg:gap-xl items-start">
-          <motion.div 
-            className="static lg:sticky lg:top-[120px] mb-lg lg:mb-0"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary mb-md block">FAQ</motion.span>
-            <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem] mb-sm text-inherit">Elevating Everyday Living</motion.h2>
-            <motion.p variants={fadeInUp} className="text-[1.1rem] leading-[1.8] text-inherit opacity-80 mb-lg" style={{ marginTop: '1.5rem' }}>
-              We don't just design spaces; we curate lifestyles. Here are some of the reasons our clients trust us with their most personal environments.
-            </motion.p>
-          </motion.div>
-
-          <motion.div 
-            className="flex flex-col gap-md"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            {[
-              { q: "What makes Shreev Livings different from other design firms?", a: "We blend sophisticated aesthetics with functional pragmatism. Our end-to-end turnkey solutions mean you have a single point of contact from initial concept to final handover, ensuring quality and consistency." },
-              { q: "Do you handle everything from design to execution?", a: "Yes, our Turnkey Projects cover everything. We manage design, procurement, contractor coordination, and final styling so you can enjoy a stress-free experience." },
-              { q: "Can you work within a specific timeline and budget?", a: "Absolutely. Transparency is a core value. We establish clear timelines and realistic budgets during the consultation phase and employ strict project management to adhere to them." },
-              { q: "Do you provide 3D visualizations before starting work?", a: "Yes, we provide photorealistic 3D renders during the design phase. This ensures you have a clear, accurate vision of your transformed space before any construction begins." },
-              { q: "Do you offer custom furniture design?", a: "We specialize in bespoke furniture. If we can't source the perfect piece for your space, our artisans will custom-build it to your exact specifications and style." }
-            ].map((faq, idx) => (
-              <motion.div key={idx} variants={fadeInUp}>
-                <FAQItem question={faq.q} answer={faq.a} />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA SECTION */}
-      <section className="py-xl md:py-[8rem] bg-secondary text-primary text-center">
-        <div className="container-custom">
-          <motion.h2 
-            className="font-serif text-[clamp(2.5rem,5vw,4rem)] mb-[2rem] text-primary"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            Ready to transform your space?
-          </motion.h2>
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.8 }}
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.9, ease: 'easeOut' }}
+            className="relative h-[420px] overflow-hidden rounded-[8px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] md:h-[600px]"
           >
-            <Button variant="primary" className="bg-primary text-bg-light hover:bg-bg-light hover:text-primary" href="/contact">
-              Start Your Project
-            </Button>
+            <motion.div style={{ width: '100%', height: '110%', position: 'absolute', top: '-5%', y: aboutImageY }}>
+              <Image src="/images/about_interior_1779040244800.png" alt="Minimalist kitchen" fill className="object-cover" />
+            </motion.div>
           </motion.div>
         </div>
       </section>
+
+      <section className="bg-primary py-xl text-bg-light md:py-2xl">
+        <div className="container-custom">
+          <SectionHeader eyebrow="Our Expertise" title="Bespoke Services" description="Thoughtful design support for homes, studios, and commercial environments." dark />
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={stagger} className="grid gap-lg sm:grid-cols-2 lg:grid-cols-3">
+            {services.map(({ icon: Icon, title, description }) => (
+              <motion.div key={title} variants={fadeInUp} whileHover={{ y: -8 }} className="rounded-[8px] border border-white/10 bg-white/5 p-xl transition-all duration-300 hover:border-secondary/50 hover:bg-white/10">
+                <Icon size={38} className="mb-md text-secondary" />
+                <h3 className="mb-sm font-serif text-[1.5rem]">{title}</h3>
+                <p className="text-[1rem] leading-[1.7] text-white/75">{description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-bg-light py-xl text-text-dark md:py-2xl">
+        <div className="container-custom">
+          <SectionHeader eyebrow="How We Work" title="The Design Process" description="A clear process that keeps creativity aligned with clarity, quality, and time." />
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={stagger} className="grid gap-lg md:grid-cols-2 lg:grid-cols-3">
+            {process.map(({ no, title, description }) => (
+              <motion.div key={no} variants={fadeInUp} className="group relative rounded-[8px] border border-black/5 bg-white p-xl shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all duration-300 hover:-translate-y-[8px] hover:border-secondary/40 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
+                <span className="absolute right-[20px] top-[18px] font-serif text-[4rem] leading-none text-secondary/20 transition-all duration-300 group-hover:text-secondary/40">{no}</span>
+                <h3 className="relative z-10 mb-sm mt-lg font-serif text-[1.5rem]">{title}</h3>
+                <p className="relative z-10 text-[0.95rem] leading-[1.7] text-text-dark/75">{description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-primary py-xl text-bg-light md:py-2xl">
+        <div className="container-custom">
+          <SectionHeader eyebrow="Our Features" title="The Shreev Advantage" description="A luxury standard built on trust, clarity, and remarkable execution." dark />
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={stagger} className="grid gap-lg sm:grid-cols-2 lg:grid-cols-4">
+            {features.map(({ icon: Icon, title, description }) => (
+              <motion.div key={title} variants={fadeInUp} className="border-b border-white/10 pb-lg text-center sm:border-b-0 sm:border-r sm:pb-0 sm:pr-lg last:border-r-0">
+                <Icon size={38} className="mx-auto mb-md text-secondary" />
+                <h3 className="mb-sm font-serif text-[1.35rem]">{title}</h3>
+                <p className="text-[0.95rem] leading-[1.7] text-white/75">{description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-bg-light py-xl text-text-dark md:py-2xl">
+        <div className="container-custom">
+          <div className="mb-xl flex flex-col items-start justify-between gap-md md:flex-row md:items-end">
+            <div>
+              <span className="mb-md block font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary">Selected Works</span>
+              <h2 className="font-serif text-[2.2rem] md:text-[3rem]">Our Portfolio</h2>
+            </div>
+            <Button variant="secondary" href="/portfolio">View All Projects</Button>
+          </div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={stagger} className="grid gap-md md:grid-cols-2">
+            {portfolioPreview.map(({ title, category, image }) => (
+              <motion.div key={title} variants={fadeInUp} className="group relative h-[420px] overflow-hidden rounded-[8px] shadow-[0_10px_30px_rgba(0,0,0,0.05)] md:h-[540px]">
+                <Image src={image} alt={title} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.08]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a111e]/85 to-[#0a111e]/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute inset-x-0 bottom-0 p-xl text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
+                  <span className="mb-sm block text-[0.8rem] uppercase tracking-[0.15em] text-secondary">{category}</span>
+                  <h3 className="font-serif text-[2.1rem] leading-tight">{title}</h3>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-bg-light py-xl text-text-dark md:py-2xl">
+        <div className="container-custom">
+          <SectionHeader eyebrow="Our Resources" title="Curated Libraries" description="Explore premium finishes, surfaces, and lighting direction for your next transformation." />
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={stagger} className="grid gap-md md:grid-cols-2">
+            <motion.div variants={fadeInUp} className="group relative h-[420px] overflow-hidden rounded-[8px] shadow-[0_10px_30px_rgba(0,0,0,0.05)]">
+              <Image src="/images/luxury_tiles_material_1780893606024.png" alt="Material library" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.08]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a111e]/80 to-[#0a111e]/20" />
+              <div className="absolute inset-x-0 bottom-0 p-xl text-white">
+                <span className="mb-sm block text-[0.8rem] uppercase tracking-[0.15em] text-secondary">Textures & surfaces</span>
+                <h3 className="font-serif text-[2.1rem]">Materials Library</h3>
+              </div>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="group relative h-[420px] overflow-hidden rounded-[8px] shadow-[0_10px_30px_rgba(0,0,0,0.05)]">
+              <Image src="/images/lux_chandelier_1780896539792.png" alt="Lighting library" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.08]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a111e]/80 to-[#0a111e]/20" />
+              <div className="absolute inset-x-0 bottom-0 p-xl text-white">
+                <span className="mb-sm block text-[0.8rem] uppercase tracking-[0.15em] text-secondary">Illumination</span>
+                <h3 className="font-serif text-[2.1rem]">Lighting Showcase</h3>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-primary py-xl text-bg-light md:py-2xl">
+        <div className="container-custom grid items-start gap-lg lg:grid-cols-2">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={stagger}>
+            <motion.span variants={fadeInUp} className="mb-md block font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary">FAQ</motion.span>
+            <motion.h2 variants={fadeInUp} className="font-serif text-[2.2rem] md:text-[3rem]">Elevating Everyday Living</motion.h2>
+            <motion.p variants={fadeInUp} className="mt-lg max-w-full text-[1.08rem] leading-[1.8] text-white/75">
+              We design with everyday rituals in mind, balancing beauty, function, and personal comfort in each room.
+            </motion.p>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={stagger} className="flex flex-col gap-md">
+            {faqs.map((faq) => (
+              <motion.div key={faq.question} variants={fadeInUp}>
+                <FAQItem question={faq.question} answer={faq.answer} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* <CtaSection title="Ready to transform your space?" buttonLabel="Start Your Project" href="/contact" /> */}
     </main>
   );
 }

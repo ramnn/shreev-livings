@@ -176,7 +176,7 @@ export default function Materials() {
 							<button
 								key={material.id}
 								onClick={() => setActiveTab(material.id)}
-								className={`py-[12px] px-[24px] rounded-[30px] font-sans font-medium transition-fast border ${
+								className={`cursor-pointer py-[12px] px-[24px] rounded-[30px] font-sans font-medium transition-fast border ${
 									activeTab === material.id
 										? 'bg-primary text-bg-light border-primary hover:text-bg-light'
 										: 'text-text-muted bg-transparent border-black/10 hover:border-secondary hover:text-text-dark'

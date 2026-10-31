@@ -77,7 +77,7 @@ export default function Contact() {
                 <Button
                   variant="accent"
                   onClick={() => window.open('https://wa.me/919998439939', '_blank')}
-                  className="w-fit"
+                  className="w-fit cursor-pointer"
                 >
                   Contact Us
                 </Button>

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiInstagram, FiFacebook, FiTwitter, FiArrowRight } from 'react-icons/fi';
+import { FiInstagram, FiFacebook, FiTwitter, FiArrowRight, FiPhone } from 'react-icons/fi';
 
 const branchLocations = [
 	{
@@ -147,9 +147,9 @@ export default function Footer() {
 						<div className="flex flex-col gap-sm">
 							<h4 className="mb-md font-sans text-[0.78rem] uppercase tracking-[0.16em] text-secondary">Connect</h4>
 							<a href="mailto:shreevlivings@gmail.com" className="text-[0.95rem] text-white/75 transition-fast hover:text-secondary">shreevlivings@gmail.com</a>
-							<a href="tel:+919998439939" className="text-[0.95rem] text-white/75 transition-fast hover:text-secondary">+91 99984 39939</a>
-							<a href="tel:+919998313993" className="text-[0.95rem] text-white/75 transition-fast hover:text-secondary">+91 99983 13993</a>
-							<a href="tel:+919998187993" className="text-[0.95rem] text-white/75 transition-fast hover:text-secondary">+91 99981 87993</a>
+							<a href="tel:+919998439939" className="inline-flex items-center gap-sm text-[0.95rem] text-white/75 transition-fast hover:text-secondary"><FiPhone size={14} className="text-secondary" />+91 99984 39939</a>
+							<a href="tel:+919998313993" className="inline-flex items-center gap-sm text-[0.95rem] text-white/75 transition-fast hover:text-secondary"><FiPhone size={14} className="text-secondary" />+91 99983 13993</a>
+							<a href="tel:+919998187993" className="inline-flex items-center gap-sm text-[0.95rem] text-white/75 transition-fast hover:text-secondary"><FiPhone size={14} className="text-secondary" />+91 99981 87993</a>
 
 							<div className="mt-sm flex gap-md">
 								<a href="https://www.instagram.com/shreevlivings/" target="_blank" rel="noreferrer" aria-label="Instagram" className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/75 transition-all duration-300 hover:border-secondary hover:text-secondary">

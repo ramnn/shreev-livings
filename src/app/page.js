@@ -76,6 +76,20 @@ const faqs = [
   { question: 'Do you offer custom furniture?', answer: 'Yes, we create bespoke furniture and joinery to suit the proportions and character of your space.' },
 ];
 
+const turnkeyHighlights = [
+  { icon: FiHome, title: 'Residential Turnkey', description: 'Full home styling and execution for living rooms, bedrooms, kitchens, and wardrobes with a cohesive finish.' },
+  { icon: FiLayers, title: 'Commercial Delivery', description: 'Workspace, retail, and hospitality fit-outs delivered with planning, sourcing, and project control.' },
+  { icon: FiPenTool, title: 'Custom Design', description: 'Concept boards, material direction, furniture, styling, and detailing created to match your exact lifestyle.' },
+  { icon: FiCheckCircle, title: 'Handover Ready', description: 'Final styling, quality checks, and a polished reveal so the space is ready to enjoy from day one.' },
+];
+
+const modularHighlights = [
+  { icon: FiBox, title: 'Kitchen Planning', description: 'Smart, efficient kitchen layouts that balance storage, workflow, and premium finish quality.' },
+  { icon: FiLayers, title: 'Wardrobes & Storage', description: 'Built-in storage systems designed around daily routines, visual calm, and easy access.' },
+  { icon: FiHome, title: 'TV & Utility Walls', description: 'Integrated wall design that brings media units, storage, and utility into one elegant composition.' },
+  { icon: FiKey, title: 'Premium Finishes', description: 'BWP plywood, laminates, acrylics, PU textures, and hardware options chosen for durability and beauty.' },
+];
+
 function FAQItem({ question, answer }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -84,7 +98,7 @@ function FAQItem({ question, answer }) {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex w-full items-center justify-between gap-md py-sm text-left"
+        className="flex w-full cursor-pointer items-center justify-between gap-md py-sm text-left"
       >
         <span className="font-serif text-[1.2rem] text-inherit">{question}</span>
         <FiPlus className={`text-secondary transition-transform duration-200 ${isOpen ? 'rotate-45' : ''}`} size={22} />
@@ -128,7 +142,7 @@ export default function Home() {
             </motion.p>
 
             <motion.div variants={fadeInUp} className="flex flex-col gap-md sm:flex-row">
-              <Button variant="accent" href="/portfolio">Explore Projects</Button>
+              <Button variant="accent" href="/#turnkey">Explore Projects</Button>
               <Button variant="secondary" href="/contact">Book Consultation</Button>
             </motion.div>
           </motion.div>
@@ -174,7 +188,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section ref={aboutRef} className="bg-bg-light py-xl text-text-dark md:py-2xl">
+      <section id="about" ref={aboutRef} className="bg-bg-light py-xl text-text-dark md:py-2xl">
         <div className="container-custom grid items-center gap-xl md:grid-cols-2">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={stagger} className="md:pr-xl">
             <motion.span variants={fadeInUp} className="mb-md block font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary">About Us</motion.span>
@@ -186,7 +200,7 @@ export default function Home() {
               From residences to hospitality and commercial concepts, we craft spaces that feel elevated, effortless, and deeply personal.
             </motion.p>
             <motion.div variants={fadeInUp} className="mt-[2.5rem]">
-              <Button variant="primary" href="/about">Read Our Story</Button>
+              <Button variant="primary" href="/#about">Read Our Story</Button>
             </motion.div>
           </motion.div>
 
@@ -204,6 +218,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/*
       <section className="bg-primary py-xl text-bg-light md:py-2xl">
         <div className="container-custom">
           <SectionHeader eyebrow="Our Expertise" title="Bespoke Services" description="Thoughtful design support for homes, studios, and commercial environments." dark />
@@ -219,17 +234,38 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+      */}
 
-      <section className="bg-bg-light py-xl text-text-dark md:py-2xl">
+      <section id="turnkey" className="bg-primary py-xl text-bg-light md:py-2xl">
         <div className="container-custom">
-          <SectionHeader eyebrow="How We Work" title="The Design Process" description="A clear process that keeps creativity aligned with clarity, quality, and time." />
+          <SectionHeader eyebrow="Turnkey Expertise" title="Full-Service Interior Execution" description="From concept and procurement to final styling, we manage the complete transformation with clarity and control." dark />
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={stagger} className="grid gap-lg md:grid-cols-2 lg:grid-cols-3">
-            {process.map(({ no, title, description }) => (
-              <motion.div key={no} variants={fadeInUp} className="group relative rounded-[8px] border border-black/5 bg-white p-xl shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition-all duration-300 hover:-translate-y-[8px] hover:border-secondary/40 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
-                <span className="absolute right-[20px] top-[18px] font-serif text-[4rem] leading-none text-secondary/20 transition-all duration-300 group-hover:text-secondary/40">{no}</span>
-                <h3 className="relative z-10 mb-sm mt-lg font-serif text-[1.5rem]">{title}</h3>
-                <p className="relative z-10 text-[0.95rem] leading-[1.7] text-text-dark/75">{description}</p>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={stagger} className="grid gap-lg md:grid-cols-2 xl:grid-cols-4">
+            {turnkeyHighlights.map(({ icon: Icon, title, description }) => (
+              <motion.div key={title} variants={fadeInUp} whileHover={{ y: -8 }} className="rounded-[14px] border border-white/10 bg-white/5 p-xl shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-secondary/50 hover:bg-white/10">
+                <div className="mb-md flex h-[54px] w-[54px] items-center justify-center rounded-full bg-secondary/15 text-secondary">
+                  <Icon size={24} />
+                </div>
+                <h3 className="mb-sm font-serif text-[1.55rem]">{title}</h3>
+                <p className="text-[1rem] leading-[1.7] text-white/75">{description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section id="modular" className="bg-bg-light py-xl text-text-dark md:py-2xl">
+        <div className="container-custom">
+          <SectionHeader eyebrow="Modular Living" title="Modular Solutions for Smarter Spaces" description="Thoughtfully planned cabinetry and built-ins that maximize storage, improve flow, and elevate everyday living." />
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={stagger} className="grid gap-lg md:grid-cols-2 xl:grid-cols-4">
+            {modularHighlights.map(({ icon: Icon, title, description }) => (
+              <motion.div key={title} variants={fadeInUp} whileHover={{ y: -8 }} className="rounded-[14px] border border-black/5 bg-white p-xl shadow-[0_12px_30px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-[8px] hover:border-secondary/40 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
+                <div className="mb-md flex h-[54px] w-[54px] items-center justify-center rounded-full bg-secondary/15 text-primary">
+                  <Icon size={24} />
+                </div>
+                <h3 className="mb-sm font-serif text-[1.55rem]">{title}</h3>
+                <p className="text-[1rem] leading-[1.7] text-text-dark/75">{description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -259,7 +295,7 @@ export default function Home() {
               <span className="mb-md block font-sans uppercase tracking-[0.15em] text-[0.9rem] text-secondary">Selected Works</span>
               <h2 className="font-serif text-[2.2rem] md:text-[3rem]">Our Portfolio</h2>
             </div>
-            <Button variant="secondary" href="/portfolio">View All Projects</Button>
+            <Button variant="secondary" href="/#portfolio">View All Projects</Button>
           </div>
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={stagger} className="grid gap-md md:grid-cols-2">

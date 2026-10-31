@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export default function Button({ children, variant = 'primary', className = '', href, ...props }) {
-  const baseClass = "inline-flex items-center justify-center px-lg py-md font-sans font-medium text-base tracking-widest uppercase transition-smooth border border-transparent";
+  const baseClass = "inline-flex items-center justify-center px-lg py-md font-sans font-medium text-base tracking-widest uppercase transition-smooth border border-transparent cursor-pointer";
   
   const variants = {
     primary: "bg-primary text-bg-light hover:bg-secondary hover:text-primary",
